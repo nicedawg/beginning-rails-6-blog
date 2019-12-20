@@ -15,6 +15,8 @@ class ArticlesTest < ApplicationSystemTestCase
     click_on "New Article"
 
     fill_in "Body", with: @article.body
+    fill_in "Excerpt", with: @article.excerpt
+    fill_in "Location", with: @article.location
     fill_in "Published at", with: @article.published_at
     fill_in "Title", with: @article.title
     click_on "Create Article"
@@ -28,6 +30,8 @@ class ArticlesTest < ApplicationSystemTestCase
     click_on "Edit", match: :first
 
     fill_in "Body", with: @article.body
+    fill_in "Excerpt", with: @article.excerpt
+    fill_in "Location", with: @article.location
     fill_in "Published at", with: @article.published_at
     fill_in "Title", with: @article.title
     click_on "Update Article"
