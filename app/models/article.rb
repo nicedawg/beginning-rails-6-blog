@@ -3,6 +3,7 @@ class Article < ApplicationRecord
 
   belongs_to :user
   has_and_belongs_to_many :categories
+  has_many :comments
 
   def long_title
     "#{title} - #{published_at}"
