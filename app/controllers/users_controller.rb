@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :authenticate, only: [:edit, :update]
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def new
@@ -14,9 +15,6 @@ class UsersController < ApplicationController
     end
   end
 
-  def edit
-  end
-
   def update
     if @user.update(user_params)
       redirect_to articles_path, notice: 'Updated user information successfully.'
@@ -28,7 +26,7 @@ class UsersController < ApplicationController
   private
 
   def set_user
-    @user = User.find(params[:id])
+    @user = current_user
   end
 
   def user_params
