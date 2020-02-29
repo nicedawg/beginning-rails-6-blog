@@ -21,7 +21,10 @@ class CommentsController < ApplicationController
     @article = current_user.articles.find(params[:article_id])
     @comment = @article.comments.find(params[:id])
     @comment.destroy
-    redirect_to @article, notice: 'Comment deleted'
+    respond_to do |format|
+      format.html { redirect_to @article, notice: 'Comment deleted' }
+      format.js
+    end
   end
 
   private
