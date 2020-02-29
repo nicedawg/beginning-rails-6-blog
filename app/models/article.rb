@@ -4,6 +4,7 @@ class Article < ApplicationRecord
   belongs_to :user
   has_and_belongs_to_many :categories
   has_many :comments
+  has_one_attached :cover_image
 
   scope :published, -> { where.not(published_at: nil) }
   scope :draft, -> { where(published_at: nil) }
