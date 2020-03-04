@@ -19,6 +19,16 @@
   <div class="field">
     <%= form.label :cover_image %>
     <%= form.file_field :cover_image %>
+
+    <% if article.cover_image.attached? %>
+      <p>
+        <%= image_tag article.cover_image.variant(resize_to_limit: [50, 50]) %>
+        <br>
+        <%= form.label :remove_cover_image do %>
+          <%= form.check_box :remove_cover_image %> Remove this image
+        <% end %>
+      </p>
+    <% end %>
   </div>
 
   <div class="field">
