@@ -13,5 +13,5 @@
     <%= image_tag article.cover_image.variant(resize_to_limit: local_assigns.fetch(:cover_image_options, [200, 200])) %>
     <hr>
   <% end %>
-  <%= simple_format article.body %>
+  <%= article.body %>
 </div>
