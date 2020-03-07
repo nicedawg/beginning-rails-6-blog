@@ -5,7 +5,7 @@ class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.json
   def index
-    @articles = Article.all
+    @articles = Article.includes(:user).with_rich_text_body.with_attached_cover_image.all
   end
 
   # GET /articles/1
