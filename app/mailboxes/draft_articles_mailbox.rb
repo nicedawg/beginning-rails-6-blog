@@ -2,10 +2,12 @@ class DraftArticlesMailbox < ApplicationMailbox
   before_processing :require_author
 
   def process
-    author.articles.create(
+    article = author.articles.create!(
       title: mail.subject,
       body: mail.body,
     )
+
+    DraftArticlesMailer.created(mail.from, article).deliver
   end
 
   private
