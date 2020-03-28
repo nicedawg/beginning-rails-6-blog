@@ -11,6 +11,6 @@ class Comment < ApplicationRecord
   end
 
   def email_article_author
-    NotifierMailer.comment_added(self).deliver
+    NotifierMailer.comment_added(self).deliver_later
   end
 end
