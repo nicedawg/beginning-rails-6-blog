@@ -1,9 +1,12 @@
 class Car
   include ActiveModel::AttributeAssignment
-  extend ActiveModel::Callbacks
   include ActiveModel::Dirty
+  include ActiveModel::Validations
 
   attr_accessor :make, :model, :year, :color
+
+  validates :make, :model, :year, :color, presence: true
+  validates :year, numericality: { only_integer: true, greater_than: 1885, less_than: Time.zone.now.year.to_i + 1 }
 
   define_attribute_methods :color
   define_model_callbacks :paint
