@@ -8,6 +8,7 @@ class Article < ApplicationRecord
   has_one_attached :cover_image
   attr_accessor :remove_cover_image
   after_save { cover_image.purge if remove_cover_image == '1' }
+  after_save :broadcast_new_article
 
   has_rich_text :body
 
@@ -27,5 +28,19 @@ class Article < ApplicationRecord
   def owned_by?(owner)
     return false unless owner.is_a?(User)
     user == owner
+  end
+
+  private
+
+  def broadcast_new_article
+    if published? && saved_change_to_published_at?
+      ActionCable.server.broadcast(
+        "articles:new",
+        new_article: ArticlesController.render(
+          partial: 'articles/new_article_notification',
+          locals: { article: self }
+        )
+      )
+    end
   end
 end
