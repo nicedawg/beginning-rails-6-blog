@@ -1,4 +1,4 @@
-# one:
-#   record: name_of_fixture (ClassOfFixture)
-#   name: content
-#   body: <p>In a <i>million</i> stars!</p>
+welcome_to_rails_body:
+  record: welcome_to_rails (Article)
+  name: body
+  body: <p>Rails is such a nice web framework written in ruby</p>
