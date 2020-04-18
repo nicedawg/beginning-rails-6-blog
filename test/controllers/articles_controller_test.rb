@@ -69,4 +69,18 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
       delete article_url(@article)
     end
   end
+
+  test "should redirect to article url when submitting valid email a friend form" do
+    post notify_friend_article_url(@article), params: {
+      email_a_friend: { name: 'Joe', email: 'joe@example.com' }
+    }, xhr: true
+    assert_redirected_to article_url(@article)
+  end
+
+  test "should respond with unprocessable_entity when submitting invalid email a friend form" do
+    post notify_friend_article_url(@article), params: {
+      email_a_friend: { name: 'Joe', email: 'notAnEmail' }
+    }, xhr: true
+    assert_response :unprocessable_entity
+  end
 end
