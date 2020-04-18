@@ -10,4 +10,9 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
+  ActionDispatch::IntegrationTest.include Turbolinks::Assertions
+
+  def login_as(user)
+    post session_url(email: users(user).email, password: 'secret')
+  end
 end
