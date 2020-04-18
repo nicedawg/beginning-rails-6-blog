@@ -36,10 +36,22 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test "should raise RecordNotFound when non-owner tries to get edit" do
+    login_as :lauren
+    assert_raises(ActiveRecord::RecordNotFound) { get edit_article_url(@article) }
+  end
+
   test "should update article" do
     login_as :eugene
     patch article_url(@article), params: { article: { body: @article.body, excerpt: @article.excerpt, location: @article.location, published_at: @article.published_at, title: @article.title } }
     assert_redirected_to article_url(@article)
+  end
+
+  test "should raise RecordNotFound when non-owner tries to update article" do
+    login_as :lauren
+    assert_raises(ActiveRecord::RecordNotFound) do
+      patch article_url(@article), params: { article: { body: @article.body, excerpt: @article.excerpt, location: @article.location, published_at: @article.published_at, title: @article.title } }
+    end
   end
 
   test "should destroy article" do
@@ -49,5 +61,12 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
     end
 
     assert_redirected_to articles_url
+  end
+
+  test "should raise RecordNotFound when non-owner tries to destroy article" do
+    login_as :lauren
+    assert_raises(ActiveRecord::RecordNotFound) do
+      delete article_url(@article)
+    end
   end
 end
