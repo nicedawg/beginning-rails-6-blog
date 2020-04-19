@@ -17,5 +17,6 @@ module Blog
     # the framework and any gems in your application.
 
     I18n.available_locales = [:en, :'pt-br']
+    I18n.default_locale = 'pt-br'
   end
 end
