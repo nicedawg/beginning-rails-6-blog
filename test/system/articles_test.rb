@@ -2,7 +2,7 @@ require "application_system_test_case"
 
 class ArticlesTest < ApplicationSystemTestCase
   setup do
-    @article = articles(:one)
+    @article = articles(:welcome_to_rails)
   end
 
   test "visiting the index" do
