@@ -25,7 +25,7 @@
         <%= image_tag article.cover_image.variant(resize_to_limit: [50, 50]) %>
         <br>
         <%= form.label :remove_cover_image do %>
-          <%= form.check_box :remove_cover_image %> Remove this image
+          <%= form.check_box :remove_cover_image %> <%= t("articles.remove_this_image") %>
         <% end %>
       </p>
     <% end %>

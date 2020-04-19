@@ -1,4 +1,4 @@
-<h1>New Article</h1>
+<h1><%= t("articles.new_article") %></h1>
 
 <p>
   <em>Did you know that you can submit draft articles via email?</em>
@@ -7,4 +7,4 @@
 
 <%= render 'form', article: @article %>
 
-<%= link_to 'Back', articles_path %>
+<%= link_to t("general.back"), articles_path %>

@@ -11,15 +11,15 @@
     </div>
   <% end %>
   <div class="field">
-    <%= form.label :name, 'Your name' %>
+    <%= form.label :name, t('general.your_name') %>
     <%= form.text_field :name %>
   </div>
   <div class="field">
-    <%= form.label :email, "Your friend's email" %>
+    <%= form.label :email, t("general.your_friend_email") %>
     <%= form.text_field :email %>
   </div>
   <div class="actions">
-    <%= form.submit 'Send' %> or
-    <%= link_to 'Cancel', '#', onclick: "document.querySelector('#notify_friend').style.display='none';return false;" %>
+    <%= form.submit t("general.send_email") %> <%= t("general.or") %>
+    <%= link_to t("general.cancel"), '#', onclick: "document.querySelector('#notify_friend').style.display='none';return false;" %>
   </div>
 <% end %>
