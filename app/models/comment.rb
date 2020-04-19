@@ -7,7 +7,7 @@ class Comment < ApplicationRecord
   after_create :email_article_author
 
   def article_should_be_published
-    errors.add(:article_id, 'is not published yet') if article && !article.published?
+    errors.add(:article_id, I18n.t('comments.errors.not_published_yet')) if article && !article.published?
   end
 
   def email_article_author
