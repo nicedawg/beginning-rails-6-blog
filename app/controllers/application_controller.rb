@@ -15,6 +15,6 @@ class ApplicationController < ActionController::Base
   end
 
   def access_denied
-    redirect_to(login_path, notice: "Please log in to continue") and return false
+    redirect_to(login_path, notice: t('application.access_denied')) and return false
   end
 end
