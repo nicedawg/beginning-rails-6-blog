@@ -2,11 +2,11 @@
 
 <%= form_with(url: session_path, local: true) do |form| %>
   <div class="field">
-    <%= form.label :email %>
+    <%= form.label :email, t("sessions.email") %>
     <%= form.text_field :email %>
   </div>
   <div class="field">
-    <%= form.label :password %>
+    <%= form.label :password, t("sessions.password") %>
     <%= form.password_field :password %>
   </div>
   <div class="actions">

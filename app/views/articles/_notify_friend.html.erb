@@ -1,8 +1,7 @@
 <%= form_with(model: @email_a_friend, url: notify_friend_article_path(article), id: 'email_a_friend') do |form| %>
   <% if @email_a_friend.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@email_a_friend.errors.count, "error") %> prohibited this from being submitted:</h2>
-
+      <h2><%= t("errors.header", count: @email_a_friend.errors.count) %></h2>
       <ul>
         <% @email_a_friend.errors.full_messages.each do |message| %>
           <li><%= message %></li>

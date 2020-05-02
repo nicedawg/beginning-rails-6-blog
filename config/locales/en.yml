@@ -31,6 +31,14 @@ en:
     notify_friend_success: Successfully sent a message to your friend
     remove_this_image: Remove this image
     new_article_published: New Article Published!
+    draft_via_email_notice_html: |
+      <em>Did you know that you can submit draft articles via email?</em>
+      Send an email to %{mailto_link} with the title in your subject, and your draft content in the body.
+
+  errors:
+    header:
+      one: "1 error prohibited this form from being submitted"
+      other: "%{count} errors prohibited this form from being submitted"
   users:
     new_user: New user
     edit_password: Edit Password

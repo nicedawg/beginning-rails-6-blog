@@ -12,4 +12,4 @@
   <%= render @article.comments %>
 </div>
 
-<%= link_to "new comment", new_article_comment_path(@article), remote: true, id: 'new_comment_link' %>
+<%= link_to t("comments.new_comment"), new_article_comment_path(@article), remote: true, id: 'new_comment_link' %>
